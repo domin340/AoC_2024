@@ -1,3 +1,14 @@
+--[[
+  1. Read sample.txt
+  2. Split into 2 tables of {LEFT, RIGHT}
+  3. Iterate through each LEFT table element
+    and get all possible occurrences from RIGHT table
+  4. multiply LEFT table target with its occurences
+  5. sum up
+]]
+
+-- OUTPUT = 17191599
+
 local leftTable = {}
 local rightTable = {}
 
