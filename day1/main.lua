@@ -26,7 +26,7 @@ local sum = 0;
 for i = 1, #leftTable do
   local leftItem = leftTable[i]
   local rightItem = rightTable[i]
-  sum = sum + (math.max(rightItem, leftItem) - math.min(leftItem, rightItem))
+  sum = sum + math.abs(leftItem - rightItem)
 end
 
 print(sum)
