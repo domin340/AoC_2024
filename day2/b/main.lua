@@ -1,4 +1,4 @@
---- create a split method to split on space
+--- method to split string on space
 local function splitSentence(str, middleware)
   local words = {}
   for word in string.gmatch(str, "%w+") do
