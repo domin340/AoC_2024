@@ -7,15 +7,6 @@ local function splitSentence(str, middleware)
   return words
 end
 
---- returns length of a table
-local function getSize(tbl)
-  local count = 0
-  for _ in pairs(tbl) do
-    count = count + 1
-  end
-  return count
-end
-
 --- checks if the value ranges in range
 local function hasRange(distance, range)
   return distance >= 0 and distance <= range
@@ -23,9 +14,8 @@ end
 
 --- determines whenever the report is safe
 local function isSafe(tbl)
-  local size = getSize(tbl)
   -- if the size is less or equal to 2 then it's surely ordered
-  if size <= 2 then
+  if #tbl <= 2 then
     return true
   end
   -- check if the distance ranges in range
