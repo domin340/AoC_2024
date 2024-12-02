@@ -53,15 +53,33 @@ end
 -- define where the input file is
 local fileName = "sample.txt"
 
--- the output
+--- creates shallow copy of a table
+local function copyTable(tbl)
+  local copy = {}
+  for i = 1, #tbl do
+    table.insert(copy, tbl[i])
+  end
+  return copy
+end
+
+-- output
 local safeReports = 0
 
--- read each file line
 for line in io.lines(fileName) do
-  -- split the text on space and turn string to number
   local nums = splitSentence(line, tonumber)
   if isSafe(nums) then
     safeReports = safeReports + 1
+  else
+    -- check for any possibility
+    for i = 1, #nums do
+      -- check if copied table is safe without a value of index
+      local copy = copyTable(nums)
+      table.remove(copy, i)
+      if isSafe(copy) then
+        safeReports = safeReports + 1
+        break
+      end
+    end
   end
 end
 
