@@ -1,3 +1,6 @@
+-- OUTPUT = 189527826 
+
+--- reads whole file and return its content or nil on error
 local function readFile(fileName)
   local file = io.open(fileName, "r")
   if not file then
@@ -8,6 +11,7 @@ local function readFile(fileName)
   return content
 end
 
+-- handle IO operations with the file
 local fileName = "./sample.txt"
 local data = readFile(fileName)
 if not data then
@@ -18,6 +22,7 @@ local sum = 0
 
 local mulRegex = "mul%((%d+),(%d+)%)"
 
+-- capture first and second number inside mul function
 for first, second in string.gmatch(data, mulRegex) do
   sum = sum + first * second
 end
