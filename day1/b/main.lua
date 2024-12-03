@@ -1,17 +1,9 @@
---[[
-  1. Read sample.txt
-  2. Split into 2 tables of {LEFT, RIGHT}
-  3. Iterate through each LEFT table element
-    and get all possible occurrences from RIGHT table
-  4. multiply LEFT table target with its occurences
-  5. sum up
-]]
-
 -- OUTPUT = 17191599
 
 local leftTable = {}
 local rightTable = {}
 
+-- read whole file in order to split it into 2 lists
 for line in io.lines("./sample.txt") do
   for left, right in string.gmatch(line, "(%d+)%s+(%d+)") do
     table.insert(leftTable, tonumber(left))
@@ -23,6 +15,7 @@ local sum = 0;
 for i = 1, #leftTable do
   local occurrences = 0;
   local curItem = leftTable[i]
+  -- find all ocurrences of left table item in right table
   for j = 1, #rightTable do
     if curItem == rightTable[j] then
       occurrences = occurrences + 1

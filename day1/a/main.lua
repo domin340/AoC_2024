@@ -1,17 +1,9 @@
---[[
-  FIRST PROTOTYPE
-  1. Read sample.txt
-  2. Split it into 2 tables of {LEFT, RIGHT}
-  3. Sort each one
-  4. calculate the difference from subtracting max and min value
-  5. sum up
-]]
-
 -- OUTPUT = 1970720
 
 local leftTable = {}
 local rightTable = {}
 
+-- read whole file in order to split it into 2 lists
 for line in io.lines("./sample.txt") do
   for left, right in string.gmatch(line, "(%d+)%s+(%d+)") do
     table.insert(leftTable, left)
@@ -19,6 +11,7 @@ for line in io.lines("./sample.txt") do
   end
 end
 
+-- sort them ascendically in order to compare smallest to smallest
 table.sort(leftTable)
 table.sort(rightTable)
 
@@ -26,6 +19,7 @@ local sum = 0;
 for i = 1, #leftTable do
   local leftItem = leftTable[i]
   local rightItem = rightTable[i]
+  -- calculate the total distance and sum it up
   sum = sum + math.abs(leftItem - rightItem)
 end
 

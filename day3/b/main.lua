@@ -1,6 +1,6 @@
 -- OUTPUT = 63013756
 
---- reads whole file and return its content or nil on error
+--- reads whole file and returns its content or nil on error
 local function readFile(fileName)
   local file = io.open(fileName, "r")
   if not file then
